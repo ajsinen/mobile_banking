@@ -189,6 +189,7 @@ dependencies = [
     { name = "asyncpg" },
     { name = "dotenv" },
     { name = "fastapi" },
+    { name = "fastapi-swagger-dark" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
     { name = "pyjwt" },
@@ -202,11 +203,21 @@ requires-dist = [
     { name = "asyncpg", specifier = ">=0.31.0" },
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "fastapi", specifier = ">=0.138.0" },
+    { name = "fastapi-swagger-dark", specifier = ">=0.0.9" },
     { name = "pydantic", specifier = ">=2.13.4" },
     { name = "pydantic-settings", specifier = ">=2.14.2" },
     { name = "pyjwt", specifier = ">=2.13.0" },
     { name = "starlette", specifier = ">=1.3.1" },
     { name = "uvicorn", specifier = ">=0.49.0" },
+]
+
+[[package]]
+name = "fastapi-swagger-dark"
+version = "0.0.9"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/f7/90/f68af675cf21bd4f091c6e686b9d01839a956f3188fbd68c3527399a8fdb/fastapi_swagger_dark-0.0.9.tar.gz", hash = "sha256:3f981af17ced385e53bd813c4ba08c99c8ca551c1a2957295abbf12c511d97d5", size = 179841, upload-time = "2025-12-08T10:59:23.379Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/63/06/f880792625d4ebb75786e47867ade0c9a7163a52293847babb9adf9540c1/fastapi_swagger_dark-0.0.9-py3-none-any.whl", hash = "sha256:189ae4b8c4b58fc2faa19929517fc81495add85611b3117f650f15135d53f748", size = 58298, upload-time = "2025-12-08T10:59:22.168Z" },
 ]
 
 [[package]]
