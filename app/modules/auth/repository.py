@@ -17,8 +17,6 @@ class AuthRepository(BaseRepository):
         async with self.pool.acquire() as conn:
             return await conn.fetchrow(
                 "INSERT INTO users (name, username, password, age, address) "
-                "VALUES ($1, $2, $3, $4, $5) RETURNING id, username, name",
+                "VALUES ($1, $2, $3, $4, $5) RETURNING id, username, name, customer_id",
                 name, username, password, age, address
             )
-
-

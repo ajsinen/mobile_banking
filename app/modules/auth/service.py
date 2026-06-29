@@ -1,5 +1,6 @@
+from uuid import UUID
 from fastapi import HTTPException, status
-from app.core.security import hash_password
+from app.core.security import hash_password, verify_password, create_access_token
 from app.modules.auth.repository import (AuthRepository)
 
 
@@ -18,3 +19,25 @@ class AuthService:
 
         user = await self.repo.register_user(name, address, hashed_password, age, username)
         return dict(user)
+
+
+    async def login_user(self, username: str, password: str) -> dict:
+        # GET USER BY USERNAME
+        user = await self.repo.get_user_by_username(username)
+        if not user:
+            raise HTTPException(detail="User not found", status_code=status.HTTP_404_NOT_FOUND)
+
+        user = dict(user)
+
+        # CHECK IF VALID PASSWORD FOR USERNAME
+        if not verify_password(password, str(user.get("password"))):
+            raise HTTPException(detail="Incorrect username or password", status_code=status.HTTP_404_NOT_FOUND)
+
+        # CREATE ACCESS TOKEN
+        access_token = create_access_token(str(user.get("id")))
+        print("ACCESS_TOKEN: ", access_token)
+
+        return {
+            "access_token": access_token,
+            "token_type": "bearer",
+        }

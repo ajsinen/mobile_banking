@@ -2,10 +2,10 @@ from fastapi import APIRouter
 from starlette import status
 from app.modules.auth.schema import (
     RegisterRequest,
-    RegisterResponse
+    RegisterResponse, LoginRequest, LoginResponse
 )
 from app.modules.auth.service import (AuthService)
-router = APIRouter(tags=["authentication"])
+router = APIRouter(tags=["Authentication"])
 
 service = AuthService()
 
@@ -14,6 +14,6 @@ async def register(payload: RegisterRequest):
     return await service.register_user(payload.username, payload.password, payload.name, payload.address, payload.age)
 
 
-# @router.get("/login")
-# async def login():
-#     return {"message": "Hello World"}
+@router.post("/login", response_model= LoginResponse, status_code=status.HTTP_200_OK)
+async def login(payload: LoginRequest):
+    return await service.login_user(payload.username, payload.password)

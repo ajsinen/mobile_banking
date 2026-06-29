@@ -1,5 +1,9 @@
-from pydantic_settings import BaseSettings, SettingsConfigDict
+import os
 
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Settings(BaseSettings):
     # Application
@@ -11,7 +15,7 @@ class Settings(BaseSettings):
     API_PREFIX: str = "/api/v1"
 
     # Security
-    SECRET_KEY: str = "secretkey"
+    SECRET_KEY: str = os.getenv("SECRET_KEY")
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 5
 
