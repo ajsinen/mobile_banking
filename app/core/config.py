@@ -3,20 +3,17 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     # Application
-    APP_NAME: str = "Loan Prediction API"
-    APP_VERSION: str = "1.0.0"
+    APP_NAME: str = "Mobile Banking Simulation"
+    APP_VERSION: str = "1.2.0"
     DEBUG: bool = False
 
     # API
     API_PREFIX: str = "/api/v1"
 
-    # Database
-    DATABASE_URL: str
-
     # Security
-    SECRET_KEY: str
+    SECRET_KEY: str = "secretkey"
     ALGORITHM: str = "HS256"
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 5
 
     # CORS
     ALLOWED_ORIGINS: list[str] = [
