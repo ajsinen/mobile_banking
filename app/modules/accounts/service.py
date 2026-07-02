@@ -1,13 +1,17 @@
+from uuid import UUID
 from starlette import status
-
+from app.modules.auth.repository import AuthRepository
 from app.modules.accounts.repository import AccountRepository
 from fastapi import HTTPException
 
 class AccountService:
     def __init__(self):
         self.account_repository = AccountRepository()
+        self.auth_repository = AuthRepository()
 
     async def create_savings(self, customer_id: str, account_number: str) -> dict:
+
+
 
         user_account = await self.account_repository.create_account(customer_id, account_number)
 

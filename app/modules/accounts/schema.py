@@ -1,11 +1,10 @@
 from pydantic import BaseModel, Field
 
 class CreateSavingsRequest(BaseModel):
-    customer_id: str
-    account_number: str
+    accountNumber: str
 
 
 class CreateSavingsResponse(BaseModel):
-    customer_id: str
-    account_number: str
+    customerId: str
+    accountNumber: str
     message: str | None = "Savings created Successfully"

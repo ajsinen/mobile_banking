@@ -4,15 +4,23 @@ from fastapi.params import Depends
 from uuid import UUID
 from starlette import status
 from app.modules.auth.repository import AuthRepository
+from app.core.security import decode_token
 
 
-auth_repository = AuthRepository()
+class UserDepends:
+    def __init__(self):
+        self.auth_repo = AuthRepository()
 
-async def get_user_from_jwt(headers: Request) -> dict:
-    token: str = headers.get('Authorization')
-    user = await  auth_repository.get_user_by_id(UUID(token["user_id"]))
+    async def get_user_from_jwt(self, request: Request) -> dict:
 
-    if user is None:
-        raise HTTPException(detail="User not found", status_code=status.HTTP_404_NOT_FOUND)
+        token = request.headers.get('authorization', None)
+        if not token:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
 
-    return dict(user)
+        print(token[7:])
+        decoded_token = decode_token(token[7:])
+
+        print("DECODED TOKEN",decoded_token)
+        user_info = await self.auth_repo.get_user_by_id(UUID(decoded_token["sub"]))
+
+        return user_info
