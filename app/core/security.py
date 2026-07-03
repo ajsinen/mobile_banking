@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta, UTC
 from fastapi import HTTPException
+from fastapi.security import OAuth2PasswordBearer
 import jwt
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
@@ -8,6 +9,7 @@ from starlette import status
 from app.core.config import settings
 
 ph = PasswordHasher()
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 
 def hash_password(password: str) -> str:

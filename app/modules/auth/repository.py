@@ -7,7 +7,7 @@ class AuthRepository(BaseRepository):
     async def get_user_by_id(self, user_id: UUID) -> dict:
         async with self.pool.acquire() as conn:
             return await conn.fetchrow(
-                "SELECT customer_id, username, name FROM users WHERE id = $1", user_id
+                "SELECT customer_id, username, name, role FROM users WHERE id = $1", user_id
             )
 
 
