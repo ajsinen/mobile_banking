@@ -14,7 +14,7 @@ class RegisterResponse(BaseModel):
     id: UUID
     username: str
     name: str
-    customerId: str
+    customer_id: str
 
 
 class LoginRequest(BaseModel):
@@ -23,5 +23,5 @@ class LoginRequest(BaseModel):
 
 
 class LoginResponse(BaseModel):
-    accessToken: str
-    tokenType: str = "bearer"
+    access_token: str
+    token_type: str = "bearer"
