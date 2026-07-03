@@ -36,6 +36,6 @@ class AuthService:
         print("ACCESS_TOKEN: ", access_token)
 
         return {
-            "accessToken": access_token,
-            "tokenType": "bearer",
+            "access_token": access_token,
+            "token_type": "bearer",
         }
