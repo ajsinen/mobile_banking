@@ -1,8 +1,5 @@
-from fastapi import HTTPException, Request
-from fastapi.security import OAuth2PasswordBearer
 from fastapi.params import Depends
 from uuid import UUID
-from starlette import status
 from app.modules.auth.repository import AuthRepository
 from app.core.security import decode_token, oauth2_scheme
 
