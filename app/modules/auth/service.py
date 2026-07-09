@@ -1,4 +1,3 @@
-from uuid import UUID
 from fastapi import HTTPException, status
 from app.core.security import hash_password, verify_password, create_access_token
 from app.modules.auth.repository import (AuthRepository)

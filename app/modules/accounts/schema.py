@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 class CreateSavingsRequest(BaseModel):
     account_number: str

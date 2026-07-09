@@ -1,5 +1,4 @@
 from app.core.base_repository import BaseRepository
-from app.modules.accounts.schema import CreateSavingsRequest
 from uuid import UUID
 
 
